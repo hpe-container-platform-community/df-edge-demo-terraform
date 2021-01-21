@@ -56,7 +56,7 @@ terraform init
 ### Setup Cross-Cluster security
 
 ```
-scripts/mapr_setup_cross_cluster_security.sh
+./scripts/mapr_setup_cross_cluster_security.sh
 ```
 
 
