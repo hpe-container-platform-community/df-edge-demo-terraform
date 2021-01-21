@@ -68,7 +68,7 @@ terraform init
 ```
 
 - enter mapr.com credentials when prompted
-- if this step fails, manually register the license in the MCS UI
+- if this step fails, manually register the license in the MCS UI - you can retrieve the MCS UI with `./bin/mapr_edge_demo_urls.sh` (mapr/mapr)
 
 ### Setup Edge Demo
 
@@ -89,18 +89,19 @@ terraform init
 ./bin/mapr_edge_demo_start.sh
 ```
 
-### Open dashboards
-
-```
-./bin/mapr_edge_demo_urls.sh
-```
-
 ### Setup Mirroring, Replication, etc
 
 - Open a New terminal, then run
 
 ```
 ./bin/mapr_edge_demo_poststartup.sh
+```
+
+
+### Open dashboards
+
+```
+./bin/mapr_edge_demo_urls.sh
 ```
 
 ### Restart Volume Mirror
