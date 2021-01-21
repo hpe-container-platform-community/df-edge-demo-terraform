@@ -1,6 +1,6 @@
 **OVERVIEW**
 
-This project makes it easy to setup HPE Ezmeral Data Fabric edge demo on AWS
+This section describes how to create the demo that was shown on [BrightTalk](https://www.brighttalk.com/webcast/12641/445912/stretching-hpe-ezmeral-data-fabric-from-edge-to-cloud) (demo starts around 32 mins 10 seconds).
 
 ```diff
 - The concepts demonstrated in this project are not suitable for production environments.
@@ -18,9 +18,8 @@ The following installed locally:
 
 This project has been tested on **Linux** and **OSX** client machines - Windows is unlikely to work.
 
-### Quick start
 
-#### Setup environment
+### Setup project environment
 
 ```
 # If you haven't already configured the aws CLI with your credentials, run the following:
@@ -45,7 +44,77 @@ terraform init
 We are now ready to automate the AWS infrastructure setup ...
 
 ```
-./bin/terraform_apply.sh
+./bin/terraform_apply.sh # answer yes when prompted
 ```
 
+### Install MAPR
 
+```
+./scripts/mapr_install_clusters_parallel.sh
+```
+
+### Register License
+
+- This requires an account on https://mapr.com/user - create one if you don't have one alread.
+```
+./scripts/end_user_scripts/standalone_mapr/register_license.sh
+```
+
+### Setup Edge Demo
+
+```
+./scripts//setup_edge_demo.sh
+```
+
+---
+
+## Run the demo
+
+### Run Dashboards
+
+
+- Open a New terminal, then run
+
+```
+./bin/mapr_edge_demo_start.sh
+```
+
+### Open dashboards
+
+```
+./bin/mapr_edge_demo_urls.sh
+```
+
+### Setup Mirroring, Replication, etc
+
+- Open a New terminal, then run
+
+```
+./bin/mapr_edge_demo_poststartup.sh
+```
+
+### Restart Volume Mirror
+
+- After requesting assets on the Edge dashbaord, restart mirroring with
+
+```
+./bin/mapr_edge_demo_restart_vol_mirror.sh
+```
+
+### Monitor Mirroring
+
+- Monitor DC files
+
+Open a new terminal and run:
+
+```
+./bin/mapr_edge_demo_watch_mirror.sh
+```
+
+---
+
+### Teardown the environment
+
+```
+./bin/terraform_destroy.sh # answer yes when prompted
+```
