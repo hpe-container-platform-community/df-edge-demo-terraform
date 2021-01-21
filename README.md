@@ -55,7 +55,7 @@ terraform init
 
 ### Register License
 
-- This requires an account on https://mapr.com/user - create one if you don't have one alread.
+- This requires an account on https://mapr.com/user - create one if you don't have one already.
 ```
 ./scripts/end_user_scripts/standalone_mapr/register_license.sh
 ```
