@@ -12,7 +12,7 @@ echo "Running 'find /apps/pipeline/data/imagesTable --limit 1 --pretty'"
 print_term_width '-'
 ################################################################################
 
-./generated/ssh_mapr_cluster_1_host_0.sh sudo -u mapr bash <<EOF
+./bin/ssh_mapr_cluster_1_host_0.sh sudo -u mapr bash <<EOF
    exec 2> /dev/null
    mapr dbshell --cmdfile <(echo 'find /apps/pipeline/data/imagesTable --limit 1 --pretty') 
 EOF

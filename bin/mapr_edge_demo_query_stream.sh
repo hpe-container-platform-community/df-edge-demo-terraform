@@ -12,7 +12,7 @@ echo "Running 'mapr streamanalyzer -path /apps/pipeline/data/pipelineStream -pri
 print_term_width '-'
 ################################################################################
 
-./generated/ssh_mapr_cluster_1_host_0.sh sudo -u mapr bash <<EOF
+./bin/ssh_mapr_cluster_1_host_0.sh sudo -u mapr bash <<EOF
    mapr streamanalyzer -path /apps/pipeline/data/pipelineStream -printMessages true
 
    mapr exportstream -src /apps/pipeline/data/pipelineStream -dst /tmp/pipelineStream

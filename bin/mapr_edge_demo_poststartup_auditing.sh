@@ -4,7 +4,7 @@ export HIDE_WARNINGS=1
 
 source "./scripts/variables.sh"
    
-./generated/ssh_mapr_cluster_2_host_0.sh <<EOF
+./bin/ssh_mapr_cluster_2_host_0.sh <<EOF
    sudo -u mapr bash <<BASH_EOF
       set -x
       maprcli config save -values "{\"mfs.enable.audit.as.stream\":\"1\"}"

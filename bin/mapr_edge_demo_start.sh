@@ -12,14 +12,14 @@ source "./scripts/functions.sh"
 print_header "Shutting down any running dashboard instances"
 ################################################################################ 
 
-./generated/ssh_mapr_cluster_1_host_0.sh <<EOF
+./bin/ssh_mapr_cluster_1_host_0.sh <<EOF
    set -x
    # ignore error from kill
    sudo kill -TERM \$(ps -eaf | grep -i dashboard | awk '{ print \$2 }') || true 
 EOF
 
 
-./generated/ssh_mapr_cluster_2_host_0.sh <<EOF
+./bin/ssh_mapr_cluster_2_host_0.sh <<EOF
    set -x
    # ignore error from kill
    sudo kill -TERM \$(ps -eaf | grep -i dashboard | awk '{ print \$2 }') || true
@@ -36,7 +36,7 @@ print_header "Ensuring /opt/mapr/conf/mapruserticket contains DC1 and EDGE1"
 print_header "Starting HQ Instance"
 ################################################################################ 
 
-./generated/ssh_mapr_cluster_1_host_0.sh <<EOF
+./bin/ssh_mapr_cluster_1_host_0.sh <<EOF
    set -ex
    sudo service mapr-posix-client-basic restart
 
@@ -57,7 +57,7 @@ EOF
 print_header "Starting Edge Instance"
 ################################################################################ 
 
-./generated/ssh_mapr_cluster_2_host_0.sh <<EOF
+./bin/ssh_mapr_cluster_2_host_0.sh <<EOF
    set -ex
    sudo service mapr-posix-client-basic restart
 
@@ -90,7 +90,7 @@ print_header "Set stream replica, mirror, auditing"
 print_header "Tailing dashboard startup log files"
 ################################################################################ 
 
-./generated/ssh_mapr_cluster_2_host_0.sh <<EOF
+./bin/ssh_mapr_cluster_2_host_0.sh <<EOF
    set -ex
    tail -f \
       /mapr/dc1.enterprise.org//tmp/dashboard_hq.nohup \

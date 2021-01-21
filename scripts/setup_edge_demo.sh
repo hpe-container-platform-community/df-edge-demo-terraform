@@ -10,17 +10,17 @@ export HIDE_WARNINGS=1
 
 echo "Downloading application to mapr clusters ..."
 
-./generated/ssh_mapr_cluster_1_host_0.sh "curl -L -o ./data-fabric-edge-core-cloud-master.zip https://github.com/snowch/data-fabric-edge-core-cloud/archive/master.zip"
-./generated/ssh_mapr_cluster_1_host_0.sh "md5sum ./data-fabric-edge-core-cloud-master.zip"
+./bin/ssh_mapr_cluster_1_host_0.sh "curl -L -o ./data-fabric-edge-core-cloud-master.zip https://github.com/snowch/data-fabric-edge-core-cloud/archive/master.zip"
+./bin/ssh_mapr_cluster_1_host_0.sh "md5sum ./data-fabric-edge-core-cloud-master.zip"
 
 CLUSTER2_NODE0="$(printf $(terraform output -json mapr_cluster_2_hosts_private_ip_flat) | sed 's/"//' | head -n1)" && \
 
-./generated/ssh_mapr_cluster_1_host_0.sh \
+./bin/ssh_mapr_cluster_1_host_0.sh \
    "sudo -u mapr bash -c 'scp -o StrictHostKeyChecking=no ./data-fabric-edge-core-cloud-master.zip mapr@${CLUSTER2_NODE0}:~/'"
 
 echo "Setting up HQ application ..."
 
-./generated/ssh_mapr_cluster_1_host_0.sh << EOF
+./bin/ssh_mapr_cluster_1_host_0.sh << EOF
    set -e
    sudo service mapr-posix-client-basic restart
    sudo cp -f /home/ubuntu/data-fabric-edge-core-cloud-master.zip /home/mapr/
@@ -34,7 +34,7 @@ EOF
 
 echo "Setting up Edge application ..."
 
-./generated/ssh_mapr_cluster_2_host_0.sh << EOF
+./bin/ssh_mapr_cluster_2_host_0.sh << EOF
    set -e
    sudo service mapr-posix-client-basic restart
    sudo rm -rf /home/mapr/microservices-dashboard

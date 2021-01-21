@@ -24,9 +24,9 @@ read -s password
 
 if [[ "$MAPR_CLUSTER1_COUNT" != "0" ]]; then
 
-   ./generated/ssh_mapr_cluster_1_host_0.sh sudo apt-get install -y jq
+   ./bin/ssh_mapr_cluster_1_host_0.sh sudo apt-get install -y jq
 
-   ./generated/ssh_mapr_cluster_1_host_0.sh <<EOF
+   ./bin/ssh_mapr_cluster_1_host_0.sh <<EOF
 
       CLUSTERID=\$(maprcli license showid -cluster $MAPR_CLUSTER1_NAME | tail -1 | tr -d ' ')
 
@@ -65,9 +65,9 @@ fi
 
 if [[ "$MAPR_CLUSTER2_COUNT" != "0" ]]; then
 
-   ./generated/ssh_mapr_cluster_2_host_0.sh sudo apt-get install -y jq
+   ./bin/ssh_mapr_cluster_2_host_0.sh sudo apt-get install -y jq
 
-   ./generated/ssh_mapr_cluster_2_host_0.sh <<EOF
+   ./bin/ssh_mapr_cluster_2_host_0.sh <<EOF
 
       CLUSTERID=\$(maprcli license showid -cluster $MAPR_CLUSTER2_NAME | tail -1 | tr -d ' ')
 
