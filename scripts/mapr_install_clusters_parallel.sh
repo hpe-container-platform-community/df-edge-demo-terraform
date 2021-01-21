@@ -10,21 +10,17 @@ source "./scripts/functions.sh"
 print_header "Installing MAPR"
 ################################################################################
 
-if [[ "$MAPR_CLUSTER1_COUNT" != "0" ]]; then
-   (
+(
       print_header "Installing MAPR Cluster 1"
       CLUSTER_ID=1
       ./scripts/mapr_install_cluster.sh ${CLUSTER_ID}
-   ) &
-fi
+) &
 
-if [[ "$MAPR_CLUSTER2_COUNT" != "0" ]]; then
-   (
+(
       print_header "Installing MAPR Cluster 2"
       CLUSTER_ID=2
       ./scripts/mapr_install_cluster.sh ${CLUSTER_ID}
-   ) &
-fi
+) &
 
 FAIL=0
 
@@ -38,12 +34,6 @@ done
 if [[ "$FAIL" != "0" ]]; then
    echo "ERROR: failed to install MAPR"
    exit 1
-fi
-
-# Only setup cross-cluster security if you have two clusters!
-if [[ "$MAPR_CLUSTER1_COUNT" == "0" ]] || [[ "$MAPR_CLUSTER2_COUNT" == "0" ]]; then
-   print_header "Done!"
-   exit 0
 fi
 
 ################################################################################
