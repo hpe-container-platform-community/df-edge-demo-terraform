@@ -67,6 +67,8 @@ terraform init
 ./scripts/register_license.sh
 ```
 
+- enter mapr.com credentials when prompted
+
 ### Setup Edge Demo
 
 ```
