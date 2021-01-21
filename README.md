@@ -63,7 +63,7 @@ We are now ready to automate the AWS infrastructure setup ...
 ### Setup Edge Demo
 
 ```
-./scripts//setup_edge_demo.sh
+./scripts/setup_edge_demo.sh
 ```
 
 ---
