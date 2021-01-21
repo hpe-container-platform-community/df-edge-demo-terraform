@@ -1,92 +1,31 @@
-#########################################################
-# You will need to change the variables in this section #
-#########################################################
-
-profile            = "default"             # You shouldn't need to change this
-region             = "eu-west-3"           # Change to your preferred region - ensure you have enough spare VPCs in your region.
-az                 = "eu-west-3a"          # Change to your preferred AZ
-project_id         = "<<your-name>>-hcp"   # Change your name and project name. 
-                                           # E.g. csnow-hcp-demo (with no spaces) 
-                                           # ** project_id maximum length is 18 chars **
-user               = "<<your-name>>"       # Change your name. E.g. csnow (with no spaces)
-
-worker_count       = 3                     # How many hosts do you want for EPIC or K8S (without GPUs)?
-
-gpu_worker_count   = 0                     # How many hosts do you want for EPIC or K8S (with GPUs)?
-gpu_worker_instance_type = "g4dn.xlarge"   # Specify the GPU worker host instance type 
-gpu_worker_has_disk_for_df = false         # Should the GPU worker hsot have a persistent disk for Data Fabric? 
-
-#
-# NOTE: you have to manually install GPU drivers on GPU workers before adding to HPE CP
-#
-
-mapr_cluster_1_count         = 0                     # How many hosts do you want for MAPR CLUSTER 1? (0 or 3)
-mapr_cluster_1_name          = "demo1.mapr.com"
-mapr_cluster_2_count         = 0                     # How many hosts do you want for MAPR CLUSTER 2? (0 or 3)
-mapr_cluster_2_name          = "demo2.mapr.com"
-
-# You can specify an EKS cluster here
-
-create_eks_cluster = false
-eks_instance_type     = "t2.micro" # E.g. "t3.2xlarge"
-eks_scaling_config_desired_size = 1    # must be >= 1
-eks_scaling_config_max_size     = 1    # must be >= 1
-eks_scaling_config_min_size     = 1    # must be >= 1
-eks_subnet2_cidr_block = "10.1.2.0/24" # you shouldn't need to change this
-eks_subnet3_cidr_block = "10.1.3.0/24" # you shouldn't need to change this
-eks_subnet2_az_suffix = "b"            # you shouldn't need to change this
-eks_subnet3_az_suffix = "c"            # you shouldn't need to change this
-
-# After terraform has created the EKS cluster, you can retrieve the endpoint details
-# for adding to the HPE CP UI using `terraform output`.   The variables are named:
-#
-#    eks-server-url
-#    eks-ca-certificate
-#    eks-bearer-token
-
-###########################################################################################
-# If you would like to run post installation setup scripts:                               #
-#                                                                                         #
-#    cp etc/postcreate.sh_template etc/postcreate.sh                                      #
-#                                                                                         #
-# ... then edit etc/postcreate.sh as required                                             #
-###########################################################################################
-
-###########################################################################################
-# If you are not an HPE Container Platform Sales Engineers with an AWS account you do NOT #
-# need to change the 'epic_dl_url*' settings, below                                       # 
-###########################################################################################
-
-# epic installer options
-# epic_options = "--skipeula"                             # epic < 5.2 
-epic_options = "--skipeula --default-password admin123"   # epic >= 5.2
-
-# This is a private bucket: change the epic_dl_url to your s3 url
-epic_dl_url = "s3://csnow-bins/hpe-cp-rhel-release-5.2-3020.bin"
-
-# set to true for private buckets
-epid_dl_url_needs_presign = true 
-
-# you may need to set this if you are deploying your instances in a different region to the s3 bucket on your install binary
-epic_dl_url_presign_options = "--region eu-west-1" 
-
-##########################################################################
-# You MAY need to change these types if not available in your AWS region #
-# You can heck at: https://aws.amazon.com/ec2/pricing/on-demand/         #
-# See docs/README-TROUBLESHOOTING.MD#error-launching-source-instance.    #
-##########################################################################
-
-gtw_instance_type = "m5.4xlarge" 
-ctr_instance_type = "m5.4xlarge"
-wkr_instance_type = "m5.4xlarge"
-nfs_instance_type = "t2.small"
-ad_instance_type  = "t2.small"
-rdp_instance_type = "t2.xlarge"
-mapr_instance_type = "m5.4xlarge"
+profile            = "default"                    # You shouldn't need to change this
+region             = "eu-west-2"                  # Change to your preferred region - ensure you have enough spare VPCs in your region.
+az                 = "eu-west-2a"                 # Change to your preferred AZ
+project_id         = "<<yourname>>-df-edge"       # Change your name and project name. E.g. csnow-hcp-demo
+user               = "<<yourname>>"               # Change your name. E.g. csnow
 
 ##############################################################
 ###### You probably won't need to change anything below ######
 ##############################################################
+
+mapr_cluster_1_count         = 3
+mapr_cluster_1_name          = "dc1.enterprise.org"
+mapr_cluster_2_count         = 3
+mapr_cluster_2_name          = "edge1.enterprise.org"
+
+# You can add IPs to the firewall whitelist.  Run ./bin/terraform_apply.sh after changing.
+
+additional_client_ip_list = [
+	# "1.2.3.4/32"
+	]
+
+##########################################################################
+# You may need to change these types if not available in your AWS region #
+# You can heck at: https://aws.amazon.com/ec2/pricing/on-demand/         #
+##########################################################################
+
+ad_instance_type  = "t2.small"
+mapr_instance_type = "m5.4xlarge"
 
 ssh_prv_key_path   = "./generated/controller.prv_key"
 ssh_pub_key_path   = "./generated/controller.pub_key"
@@ -94,13 +33,4 @@ ssh_pub_key_path   = "./generated/controller.pub_key"
 vpc_cidr_block     = "10.1.0.0/16"
 subnet_cidr_block  = "10.1.0.0/24"
 
-selinux_disabled = true
-ad_server_enabled = true # Do not disable this unless you are doing a manual installation
-
-rdp_server_enabled = true # Do not disable this unless you are doing a manual installation
-rdp_server_operating_system = "LINUX"
-create_eip_rdp_linux_server = false
-
-#####################################################################
-# For a full list of settings, see 'bluedata_infra.tfvars_template' #
-#####################################################################
+ad_server_enabled = true
