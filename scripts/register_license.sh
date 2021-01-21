@@ -37,13 +37,13 @@ if [[ "$MAPR_CLUSTER1_COUNT" != "0" ]]; then
       URL+="&maprcom_password=\$(echo $password | perl -ne 'chomp and print' | base64)"
 
       curl -s \$URL \
+         -o license.txt \
          | jq ".data.cluster.licenses[0].key_contents" \
          | sed 's!^"!!g' \
          | sed 's!"\$!!g' \
          | sed 's!\\\\"!"!g' \
          | perl -pe 's/\\\\n/\\n/g' \
          | perl -pe 's/\\\\r/\\r/g' \
-         > license.txt
 
       cat license.txt
 
