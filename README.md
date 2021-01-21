@@ -53,12 +53,21 @@ terraform init
 ./scripts/mapr_install_clusters_parallel.sh
 ```
 
+### Setup Cross-Cluster security
+
+```
+./scripts/mapr_setup_cross_cluster_security.sh
+```
+
+
 ### Register License
 
 - This requires an account on https://mapr.com/user - create one if you don't have one already.
 ```
 ./scripts/register_license.sh
 ```
+
+- enter mapr.com credentials when prompted
 
 ### Setup Edge Demo
 
