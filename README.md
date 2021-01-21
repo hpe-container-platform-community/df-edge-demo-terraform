@@ -68,6 +68,7 @@ terraform init
 ```
 
 - enter mapr.com credentials when prompted
+- if this step fails, manually register the license in the MCS UI
 
 ### Setup Edge Demo
 
