@@ -33,16 +33,12 @@ cd df-edge-demo-terraform
 # create a copy 
 cp ./etc/bluedata_infra.tfvars_example ./etc/bluedata_infra.tfvars
 
-# edit to reflect your requirements
+# edit to reflect your requirements - read the comments in the file!
 vi ./etc/bluedata_infra.tfvars 
 
 # initialise terraform
 terraform init
 ```
-
-For many more configuration options, see `etc/bluedata_infra.tfvars_template`.
-
-![project init](./docs/README/project_init.gif)
 
 ---
 
