@@ -113,6 +113,37 @@ Open a new terminal and run:
 
 ---
 
+### Start/Stop the EC2 instances
+
+Start ...
+
+```
+./bin/ec2_stop_all_instances.sh
+```
+
+Stop ...
+
+```
+./bin/ec2_start_all_instances.sh
+```
+
+### EC2 instance status
+
+```
+./bin/ec2_instance_status.sh
+```
+
+### SSH into EC2 instances
+
+```
+./bin/ssh_mapr_cluster_1_host_0.sh
+./bin/ssh_mapr_cluster_1_host_1.sh
+./bin/ssh_mapr_cluster_1_host_2.sh
+./bin/ssh_mapr_cluster_2_host_0.sh
+./bin/ssh_mapr_cluster_2_host_1.sh
+./bin/ssh_mapr_cluster_2_host_2.sh
+```
+
 ### Teardown the environment
 
 ```
