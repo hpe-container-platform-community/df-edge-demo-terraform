@@ -41,7 +41,7 @@ terraform init
 
 ---
 
-We are now ready to automate the AWS infrastructure setup ...
+### AWS infrastructure setup
 
 ```
 ./bin/terraform_apply.sh # answer yes when prompted
