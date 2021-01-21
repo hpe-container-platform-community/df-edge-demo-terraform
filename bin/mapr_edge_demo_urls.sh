@@ -11,11 +11,11 @@ echo "=========="
 echo "HQ Cluster"
 echo "=========="
 echo "Dashboard url: http://${HQ_HOST}:8080/dashboard/dashboardHQ.html"
-echo "MCS url:       https://${HQ_HOST}:8443"
+echo "MCS url:       https://${HQ_HOST}:8443 (mapr/mapr)"
 echo
 
 echo "============"
 echo "Edge Cluster"
 echo "============"
 echo "Dashboard url: http://${EDGE_HOST}:8080/dashboard/dashboardEdge.html"
-echo "MCS url:       https://${EDGE_HOST}:8443"
+echo "MCS url:       https://${EDGE_HOST}:8443 (mapr/mapr)"
