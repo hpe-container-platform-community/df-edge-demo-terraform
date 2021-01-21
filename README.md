@@ -127,6 +127,8 @@ Stop ...
 ./bin/ec2_start_all_instances.sh
 ```
 
+After starting the instances you need to repeat the steps to [run the demo](#run-the-demo).
+
 ### EC2 instance status
 
 ```
