@@ -90,6 +90,11 @@ terraform init
 ./bin/mapr_edge_demo_start.sh
 ```
 
+An error similar to the following indicates the enterprise license has not been applied to the clusters:
+
+> ERROR (95) -  Failed to add replica for table: /apps/pipeline/data/replicatedStream DirectCopyInfo DC_NOT_SUPPORTED
+> 2021-01-22 09:58:35,5813 ERROR Client fc/dbclient.cc:716 Thread: 2411 AddTableReplica failed, error Function not implemented(38)
+
 ### Setup Mirroring, Replication, etc
 
 - Open a New terminal, then run
