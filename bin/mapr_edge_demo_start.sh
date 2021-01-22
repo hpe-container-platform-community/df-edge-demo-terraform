@@ -13,16 +13,24 @@ print_header "Shutting down any running dashboard instances"
 ################################################################################ 
 
 ./bin/ssh_mapr_cluster_1_host_0.sh <<EOF
-   set -x
-   # ignore error from kill
-   sudo kill -TERM \$(ps -eaf | grep -i dashboard | awk '{ print \$2 }') || true 
+   DASHBOARD_PROCESS=\$(ps -eaf | grep -i [d]ashboard | awk '{ print \$2 }')
+   if [[ -z \$DASHBOARD_PROCESS ]]; then
+     echo 'OK dashboard is not running'
+   else
+     echo "Stopping \$DASHBOARD_PROCESS"
+     sudo kill -TERM \$DASHBOARD_PROCESS
+   fi
 EOF
 
 
 ./bin/ssh_mapr_cluster_2_host_0.sh <<EOF
-   set -x
-   # ignore error from kill
-   sudo kill -TERM \$(ps -eaf | grep -i dashboard | awk '{ print \$2 }') || true
+   DASHBOARD_PROCESS=\$(ps -eaf | grep -i [d]ashboard | awk '{ print \$2 }')
+   if [[ -z \$DASHBOARD_PROCESS ]]; then
+     echo 'OK dashboard is not running'
+   else
+     echo "Stopping \$DASHBOARD_PROCESS"
+     sudo kill -TERM \$DASHBOARD_PROCESS
+   fi
 EOF
 
 
