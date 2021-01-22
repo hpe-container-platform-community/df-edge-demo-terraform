@@ -36,7 +36,8 @@ if [[ "$MAPR_CLUSTER1_COUNT" != "0" ]]; then
       URL+="&maprcom_username=\$(echo $username | perl -ne 'chomp and print' | base64)"
       URL+="&maprcom_password=\$(echo $password | perl -ne 'chomp and print' | base64)"
 
-      curl -s \$URL \
+      curl -o license -s \$URL
+      cat license \
          | jq ".data.cluster.licenses[0].key_contents" \
          | sed 's!^"!!g' \
          | sed 's!"\$!!g' \
@@ -44,7 +45,6 @@ if [[ "$MAPR_CLUSTER1_COUNT" != "0" ]]; then
          | perl -pe 's/\\\\n/\\n/g' \
          | perl -pe 's/\\\\r/\\r/g' \
 	 > license.txt
-
       cat license.txt
 
       echo mapr | maprlogin password -user mapr
@@ -77,7 +77,8 @@ if [[ "$MAPR_CLUSTER2_COUNT" != "0" ]]; then
       URL+="&maprcom_username=\$(echo $username | perl -ne 'chomp and print' | base64)"
       URL+="&maprcom_password=\$(echo $password | perl -ne 'chomp and print' | base64)"
 
-      curl -s \$URL \
+      curl -o license -s \$URL
+      cat license \
          | jq ".data.cluster.licenses[0].key_contents" \
          | sed 's!^"!!g' \
          | sed 's!"\$!!g' \
