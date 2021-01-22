@@ -51,6 +51,7 @@ terraform init
 
 ```
 ./scripts/mapr_install_clusters_parallel.sh
+./scripts/mapr_verify_install.sh
 ```
 
 ### Setup Cross-Cluster security
