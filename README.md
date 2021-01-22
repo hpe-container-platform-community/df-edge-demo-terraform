@@ -67,7 +67,7 @@ terraform init
 ```
 ./scripts/register_license.sh
 ```
-- enter mapr.com credentials when prompted
+- Enter mapr.com credentials when prompted
 
 - Verify the license with (ensure the expiry date is set and has not passed):
 ```
@@ -118,7 +118,7 @@ An error similar to the following indicates the enterprise license has not been 
 
 ### Restart Volume Mirror
 
-- After requesting assets on the Edge dashbaord, restart mirroring with
+- After requesting assets on the Edge dashboard, restart mirroring with
 
 ```
 ./bin/mapr_edge_demo_restart_vol_mirror.sh
@@ -138,13 +138,13 @@ Open a new terminal and run:
 
 ### Start/Stop the EC2 instances
 
-Start ...
+Stop ...
 
 ```
 ./bin/ec2_stop_all_instances.sh
 ```
 
-Stop ...
+Start ...
 
 ```
 ./bin/ec2_start_all_instances.sh
