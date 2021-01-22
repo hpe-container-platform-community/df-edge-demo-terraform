@@ -67,9 +67,15 @@ terraform init
 ```
 ./scripts/register_license.sh
 ```
-
 - enter mapr.com credentials when prompted
+
+- Verify the license with (ensure the expiry date is set and has not passed):
+```
+./scripts/verify_license.sh
+```
+
 - if this step fails, manually register the license in the MCS UI - you can retrieve the MCS UI with `./bin/mapr_edge_demo_urls.sh` (mapr/mapr)
+
 
 ### Setup Edge Demo
 
