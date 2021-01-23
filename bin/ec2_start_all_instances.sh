@@ -24,5 +24,5 @@ echo
 echo "           If you encounter an error running ./bin/terraform_$UPDATE_COMMAND.sh it is probably because your"
 echo "           instances are not ready yet.  You can check the instances status with:"
 echo 
-echo "           ./generated/cli_running_ec2_instances.sh"
+echo "           ./bin/ec2_instance_status.sh"
 echo "***********************************************************************************************************"
