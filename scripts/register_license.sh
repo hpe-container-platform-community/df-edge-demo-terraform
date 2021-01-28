@@ -37,6 +37,12 @@ if [[ "$MAPR_CLUSTER1_COUNT" != "0" ]]; then
       URL+="&maprcom_password=\$(echo $password | perl -ne 'chomp and print' | base64)"
 
       curl -o license -s \$URL
+
+      if grep -q '"status": "ERROR"' license; then
+         echo "Problem retrieving license:"
+         cat license
+         exit 1
+      fi
       cat license \
          | jq ".data.cluster.licenses[0].key_contents" \
          | sed 's!^"!!g' \
@@ -78,6 +84,13 @@ if [[ "$MAPR_CLUSTER2_COUNT" != "0" ]]; then
       URL+="&maprcom_password=\$(echo $password | perl -ne 'chomp and print' | base64)"
 
       curl -o license -s \$URL
+
+      if grep -q '"status": "ERROR"' license; then
+         echo "Problem retrieving license:"
+         cat license
+         exit 1
+      fi
+
       cat license \
          | jq ".data.cluster.licenses[0].key_contents" \
          | sed 's!^"!!g' \
