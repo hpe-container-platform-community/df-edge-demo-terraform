@@ -116,6 +116,10 @@ An error similar to the following indicates the enterprise license has not been 
 ./bin/mapr_edge_demo_urls.sh
 ```
 
+You should see the EDGE dashboard reporting the replication status as 'ESTABLISHED':
+
+![edge_demo_replication.png](./edge_demo_replication.png)
+
 ### Restart Volume Mirror
 
 - After requesting assets on the Edge dashboard, restart mirroring with
