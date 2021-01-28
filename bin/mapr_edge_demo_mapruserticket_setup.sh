@@ -4,6 +4,10 @@ export HIDE_WARNINGS=1
 
 source "./scripts/variables.sh"
 
+exit 0
+
+#####################
+
 DC_MAPR_USERTICKET="$(HIDE_WARNINGS=1 ./bin/ssh_mapr_cluster_1_host_0.sh 'sudo head -n1 /opt/mapr/conf/mapruserticket')"
 EDGE_MAPR_USERTICKET="$(HIDE_WARNINGS=1 ./bin/ssh_mapr_cluster_2_host_0.sh 'sudo head -n1 /opt/mapr/conf/mapruserticket')"
 

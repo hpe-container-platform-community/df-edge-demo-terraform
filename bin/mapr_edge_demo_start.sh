@@ -66,7 +66,7 @@ print_header "Starting Edge Instance"
 ################################################################################ 
 
 ./bin/ssh_mapr_cluster_2_host_0.sh <<EOF
-   set -ex
+   
    sudo service mapr-posix-client-basic restart
 
    EDGE_HOSTNAME=\$(hostname -f)
