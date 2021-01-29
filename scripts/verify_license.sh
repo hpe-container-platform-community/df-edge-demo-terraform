@@ -12,6 +12,9 @@ HIDE_WARNINGS=1
 print_header "Verify License"
 ################################################################################ 
 
+./bin/ssh_mapr_cluster_1_host_0.sh sudo apt-get install -y jq
+./bin/ssh_mapr_cluster_2_host_0.sh sudo apt-get install -y jq
+
 ./bin/ssh_mapr_cluster_1_host_0.sh 'echo mapr | maprlogin password -user mapr'
 ./bin/ssh_mapr_cluster_2_host_0.sh 'echo mapr | maprlogin password -user mapr'
 
