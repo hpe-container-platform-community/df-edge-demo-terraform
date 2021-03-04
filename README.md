@@ -60,6 +60,17 @@ terraform init
 ./scripts/mapr_setup_cross_cluster_security.sh
 ```
 
+If you hit errors such as the following, restart the cluster and retry again:
+
+> Security is not enabled on the cluster: edge1.enterprise.org. Running maprlogin will not login. If you think security should be enabled -  please check your cluster configuration.
+
+You can restart the cluster with:
+
+```
+./bin/ec2_stop_all_instances.sh
+./bin/ec2_start_all_instances.sh
+```
+
 
 ### Register License
 
