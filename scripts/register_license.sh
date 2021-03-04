@@ -21,12 +21,18 @@ read username
 echo -n "Password: "
 read -s password
 
+if [[ -z $password ]]; then
+   echo password is zero length, quitting
+   exit 1
+fi
 
 if [[ "$MAPR_CLUSTER1_COUNT" != "0" ]]; then
 
    ./bin/ssh_mapr_cluster_1_host_0.sh sudo apt-get install -y jq
 
    ./bin/ssh_mapr_cluster_1_host_0.sh <<EOF
+
+      echo mapr | maprlogin password -user mapr
 
       CLUSTERID=\$(maprcli license showid -cluster $MAPR_CLUSTER1_NAME | tail -1 | tr -d ' ')
 
@@ -74,6 +80,8 @@ if [[ "$MAPR_CLUSTER2_COUNT" != "0" ]]; then
    ./bin/ssh_mapr_cluster_2_host_0.sh sudo apt-get install -y jq
 
    ./bin/ssh_mapr_cluster_2_host_0.sh <<EOF
+
+      echo mapr | maprlogin password -user mapr
 
       CLUSTERID=\$(maprcli license showid -cluster $MAPR_CLUSTER2_NAME | tail -1 | tr -d ' ')
 
