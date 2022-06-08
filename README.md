@@ -189,3 +189,7 @@ After starting the instances you need to repeat the steps to [run the demo](#run
 ```
 ./bin/terraform_destroy.sh # answer yes when prompted
 ```
+
+### High-level architecture
+
+![edge_demo_high_level_arch.png](./edge_demo_high_level_arch.png)
